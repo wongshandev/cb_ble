@@ -1,0 +1,13 @@
+PODS:
+  - LLSimpleCamera (2.2.0)
+  - VIPhotoView (0.1)
+
+DEPENDENCIES:
+  - LLSimpleCamera (~> 2.2)
+  - VIPhotoView (~> 0.1)
+
+SPEC CHECKSUMS:
+  LLSimpleCamera: 360c9647008f3cc8062748dbe7e4ebc7b4fbde04
+  VIPhotoView: bdc0cf8ddadda754b451869bd3a919e8eb5c11ab
+
+COCOAPODS: 0.35.0

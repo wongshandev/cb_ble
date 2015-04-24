@@ -1,0 +1,3 @@
+platform :ios, '8.0'
+pod 'LLSimpleCamera', '~> 2.2'
+pod 'VIPhotoView', '~> 0.1'

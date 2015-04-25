@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PeripheralsCell.h"
+#import "PeripheralsDetailSettingViewController.h"
+#import "BleStatus.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
-@interface Peripherals : UIViewController
+@interface Peripherals : UIViewController<UITableViewDelegate,UITableViewDataSource,CBCentralManagerDelegate,CBPeripheralDelegate>
 
+
+- (IBAction)BLEConnectAction:(id)sender;
+- (IBAction)PeripherSettingAction:(id)sender;
 @end

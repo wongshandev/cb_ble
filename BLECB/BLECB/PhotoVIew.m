@@ -19,7 +19,6 @@
 - (void)viewDidLoad {
 
     UITapGestureRecognizer* recognizer;
-    // handleSwipeFrom 是偵測到手势，所要呼叫的方法
     recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     recognizer.numberOfTapsRequired = 1; // 单击
     [self.view addGestureRecognizer:recognizer];

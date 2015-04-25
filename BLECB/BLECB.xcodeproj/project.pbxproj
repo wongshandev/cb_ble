@@ -22,6 +22,20 @@
 		A7BDCA1C1AEA1D68009521DC /* PhotoVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BDCA1B1AEA1D68009521DC /* PhotoVIew.m */; };
 		A7BDCA231AEA2B6B009521DC /* fanhuijinguo.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA211AEA2B6B009521DC /* fanhuijinguo.png */; };
 		A7BDCA241AEA2B6B009521DC /* fanhuijinguo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA221AEA2B6B009521DC /* fanhuijinguo@2x.png */; };
+		A7BDCA281AEA3A17009521DC /* PeripheralsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BDCA261AEA3A17009521DC /* PeripheralsCell.m */; };
+		A7BDCA291AEA3A17009521DC /* PeripheralsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA271AEA3A17009521DC /* PeripheralsCell.xib */; };
+		A7BDCA2C1AEA3AB1009521DC /* device_icon_off.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA2A1AEA3AB1009521DC /* device_icon_off.png */; };
+		A7BDCA2D1AEA3AB1009521DC /* device_icon_on.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA2B1AEA3AB1009521DC /* device_icon_on.png */; };
+		A7BDCA2F1AEA3C2F009521DC /* enter_down.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA2E1AEA3C2F009521DC /* enter_down.png */; };
+		A7BDCA311AEA3C66009521DC /* enter_off.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA301AEA3C66009521DC /* enter_off.png */; };
+		A7BDCA381AEA401A009521DC /* connect_bottom_off.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA361AEA401A009521DC /* connect_bottom_off.png */; };
+		A7BDCA391AEA401A009521DC /* connect_bottom_on.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA371AEA401A009521DC /* connect_bottom_on.png */; };
+		A7BDCA3F1AEA44E1009521DC /* BleStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BDCA3E1AEA44E1009521DC /* BleStatus.m */; };
+		A7BDCA451AEA4954009521DC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BDCA441AEA4954009521DC /* CoreBluetooth.framework */; };
+		A7BDCA471AEA4961009521DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BDCA461AEA4961009521DC /* CoreGraphics.framework */; };
+		A7BDCA4B1AEA88B6009521DC /* PeripheralsDetailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BDCA491AEA88B6009521DC /* PeripheralsDetailSettingViewController.m */; };
+		A7BDCA4C1AEA88B6009521DC /* PeripheralsDetailSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA4A1AEA88B6009521DC /* PeripheralsDetailSettingViewController.xib */; };
+		A7BDCA4E1AEA89E3009521DC /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA4D1AEA89E3009521DC /* line.png */; };
 		A7F99CB51AE8F2AC00C4103B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F99CB41AE8F2AC00C4103B /* main.m */; };
 		A7F99CB81AE8F2AC00C4103B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F99CB71AE8F2AC00C4103B /* AppDelegate.m */; };
 		A7F99CBB1AE8F2AC00C4103B /* BLECB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7F99CB91AE8F2AC00C4103B /* BLECB.xcdatamodeld */; };
@@ -77,6 +91,25 @@
 		A7BDCA1B1AEA1D68009521DC /* PhotoVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoVIew.m; sourceTree = "<group>"; };
 		A7BDCA211AEA2B6B009521DC /* fanhuijinguo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fanhuijinguo.png; sourceTree = "<group>"; };
 		A7BDCA221AEA2B6B009521DC /* fanhuijinguo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fanhuijinguo@2x.png"; sourceTree = "<group>"; };
+		A7BDCA251AEA3A17009521DC /* PeripheralsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralsCell.h; sourceTree = "<group>"; };
+		A7BDCA261AEA3A17009521DC /* PeripheralsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralsCell.m; sourceTree = "<group>"; };
+		A7BDCA271AEA3A17009521DC /* PeripheralsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeripheralsCell.xib; sourceTree = "<group>"; };
+		A7BDCA2A1AEA3AB1009521DC /* device_icon_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device_icon_off.png; sourceTree = "<group>"; };
+		A7BDCA2B1AEA3AB1009521DC /* device_icon_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device_icon_on.png; sourceTree = "<group>"; };
+		A7BDCA2E1AEA3C2F009521DC /* enter_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enter_down.png; sourceTree = "<group>"; };
+		A7BDCA301AEA3C66009521DC /* enter_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enter_off.png; sourceTree = "<group>"; };
+		A7BDCA361AEA401A009521DC /* connect_bottom_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connect_bottom_off.png; sourceTree = "<group>"; };
+		A7BDCA371AEA401A009521DC /* connect_bottom_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connect_bottom_on.png; sourceTree = "<group>"; };
+		A7BDCA3D1AEA44E1009521DC /* BleStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleStatus.h; sourceTree = "<group>"; };
+		A7BDCA3E1AEA44E1009521DC /* BleStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BleStatus.m; sourceTree = "<group>"; };
+		A7BDCA401AEA4947009521DC /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A7BDCA411AEA4947009521DC /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		A7BDCA441AEA4954009521DC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		A7BDCA461AEA4961009521DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A7BDCA481AEA88B6009521DC /* PeripheralsDetailSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralsDetailSettingViewController.h; sourceTree = "<group>"; };
+		A7BDCA491AEA88B6009521DC /* PeripheralsDetailSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralsDetailSettingViewController.m; sourceTree = "<group>"; };
+		A7BDCA4A1AEA88B6009521DC /* PeripheralsDetailSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeripheralsDetailSettingViewController.xib; sourceTree = "<group>"; };
+		A7BDCA4D1AEA89E3009521DC /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
 		A7F99CAF1AE8F2AC00C4103B /* BLECB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLECB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F99CB31AE8F2AC00C4103B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7F99CB41AE8F2AC00C4103B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -118,6 +151,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7BDCA471AEA4961009521DC /* CoreGraphics.framework in Frameworks */,
+				A7BDCA451AEA4954009521DC /* CoreBluetooth.framework in Frameworks */,
 				A7BDCA071AE9F02E009521DC /* CoreLocation.framework in Frameworks */,
 				A7BDCA051AE9EFCC009521DC /* MapKit.framework in Frameworks */,
 				8983E7B7A8136797E37915FD /* libPods.a in Frameworks */,
@@ -137,6 +172,10 @@
 		71AE248DFBA2CD87E5180B3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7BDCA461AEA4961009521DC /* CoreGraphics.framework */,
+				A7BDCA441AEA4954009521DC /* CoreBluetooth.framework */,
+				A7BDCA401AEA4947009521DC /* CoreAudio.framework */,
+				A7BDCA411AEA4947009521DC /* CoreAudioKit.framework */,
 				A7BDCA061AE9F02E009521DC /* CoreLocation.framework */,
 				A7BDCA041AE9EFCC009521DC /* MapKit.framework */,
 				AF4BC961F24205C34EE19492 /* libPods.a */,
@@ -218,6 +257,13 @@
 		A7F99CF11AE8F40100C4103B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A7BDCA4D1AEA89E3009521DC /* line.png */,
+				A7BDCA361AEA401A009521DC /* connect_bottom_off.png */,
+				A7BDCA371AEA401A009521DC /* connect_bottom_on.png */,
+				A7BDCA301AEA3C66009521DC /* enter_off.png */,
+				A7BDCA2E1AEA3C2F009521DC /* enter_down.png */,
+				A7BDCA2A1AEA3AB1009521DC /* device_icon_off.png */,
+				A7BDCA2B1AEA3AB1009521DC /* device_icon_on.png */,
 				A7BDCA211AEA2B6B009521DC /* fanhuijinguo.png */,
 				A7BDCA221AEA2B6B009521DC /* fanhuijinguo@2x.png */,
 				A7BDCA0E1AEA1B5E009521DC /* camera-switch.png */,
@@ -251,6 +297,14 @@
 				A7F99CFD1AE8F5A800C4103B /* settings.m */,
 				A7BDCA1A1AEA1D68009521DC /* PhotoVIew.h */,
 				A7BDCA1B1AEA1D68009521DC /* PhotoVIew.m */,
+				A7BDCA251AEA3A17009521DC /* PeripheralsCell.h */,
+				A7BDCA261AEA3A17009521DC /* PeripheralsCell.m */,
+				A7BDCA271AEA3A17009521DC /* PeripheralsCell.xib */,
+				A7BDCA3D1AEA44E1009521DC /* BleStatus.h */,
+				A7BDCA3E1AEA44E1009521DC /* BleStatus.m */,
+				A7BDCA481AEA88B6009521DC /* PeripheralsDetailSettingViewController.h */,
+				A7BDCA491AEA88B6009521DC /* PeripheralsDetailSettingViewController.m */,
+				A7BDCA4A1AEA88B6009521DC /* PeripheralsDetailSettingViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -364,27 +418,36 @@
 			files = (
 				A7F99CE81AE8F2CB00C4103B /* Default@2x.png in Resources */,
 				A7BDCA011AE9E4C6009521DC /* tab_photograp_bg.png in Resources */,
+				A7BDCA391AEA401A009521DC /* connect_bottom_on.png in Resources */,
 				A7F99D1C1AE8F70B00C4103B /* local_down.png in Resources */,
 				A7F99CC11AE8F2AC00C4103B /* Main.storyboard in Resources */,
 				A7F99D1F1AE8F70B00C4103B /* setting_down@2x.png in Resources */,
 				A7BDCA171AEA1B5E009521DC /* camera-flash-off@2x.png in Resources */,
+				A7BDCA2F1AEA3C2F009521DC /* enter_down.png in Resources */,
 				A7BDCA151AEA1B5E009521DC /* camera-switch@2x.png in Resources */,
 				A7F99D1B1AE8F70B00C4103B /* device_down@2x.png in Resources */,
 				A7F99D1D1AE8F70B00C4103B /* local_down@2x.png in Resources */,
+				A7BDCA381AEA401A009521DC /* connect_bottom_off.png in Resources */,
 				A7F99CE61AE8F2CB00C4103B /* Default-568h@2x.png in Resources */,
 				A7F99CEF1AE8F2CB00C4103B /* Icon.png in Resources */,
 				A7F99CF01AE8F2CB00C4103B /* Icon@2x.png in Resources */,
 				A7F99D181AE8F70B00C4103B /* camera_down.png in Resources */,
+				A7BDCA2C1AEA3AB1009521DC /* device_icon_off.png in Resources */,
+				A7BDCA4E1AEA89E3009521DC /* line.png in Resources */,
 				A7617B141AE93CE200B2FCE9 /* Localizable.strings in Resources */,
 				A7BDCA031AE9EDB1009521DC /* album.png in Resources */,
 				A7F99CE71AE8F2CB00C4103B /* Default.png in Resources */,
+				A7BDCA311AEA3C66009521DC /* enter_off.png in Resources */,
 				A7BDCA161AEA1B5E009521DC /* camera-flash-off.png in Resources */,
+				A7BDCA4C1AEA88B6009521DC /* PeripheralsDetailSettingViewController.xib in Resources */,
 				A7BDCA231AEA2B6B009521DC /* fanhuijinguo.png in Resources */,
 				A7BDCA241AEA2B6B009521DC /* fanhuijinguo@2x.png in Resources */,
 				A7BDCA141AEA1B5E009521DC /* camera-switch.png in Resources */,
+				A7BDCA2D1AEA3AB1009521DC /* device_icon_on.png in Resources */,
 				A7BDCA181AEA1B5E009521DC /* camera-flash-on.png in Resources */,
 				A7F99D1E1AE8F70B00C4103B /* setting_down.png in Resources */,
 				A7F99D191AE8F70B00C4103B /* camera_down@2x.png in Resources */,
+				A7BDCA291AEA3A17009521DC /* PeripheralsCell.xib in Resources */,
 				A7BDCA191AEA1B5E009521DC /* camera-flash-on@2x.png in Resources */,
 				A7F99D1A1AE8F70B00C4103B /* device_down.png in Resources */,
 			);
@@ -441,7 +504,10 @@
 				A7F99CF51AE8F50C00C4103B /* Peripherals.m in Sources */,
 				A7F99CB51AE8F2AC00C4103B /* main.m in Sources */,
 				A7F99CF81AE8F57200C4103B /* photograph.m in Sources */,
+				A7BDCA3F1AEA44E1009521DC /* BleStatus.m in Sources */,
 				A7F99CFB1AE8F59300C4103B /* Loction.m in Sources */,
+				A7BDCA281AEA3A17009521DC /* PeripheralsCell.m in Sources */,
+				A7BDCA4B1AEA88B6009521DC /* PeripheralsDetailSettingViewController.m in Sources */,
 				A7F99CBE1AE8F2AC00C4103B /* ViewController.m in Sources */,
 				A7BDCA1C1AEA1D68009521DC /* PhotoVIew.m in Sources */,
 				A7F99CFE1AE8F5A800C4103B /* settings.m in Sources */,

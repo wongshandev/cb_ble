@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		8983E7B7A8136797E37915FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4BC961F24205C34EE19492 /* libPods.a */; };
 		A7617B141AE93CE200B2FCE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7617B161AE93CE200B2FCE9 /* Localizable.strings */; };
+		A78931251AEF8EF5006C9FE7 /* scan_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A78931241AEF8EF5006C9FE7 /* scan_normal.png */; };
+		A79193871AEE7F4D0033FA59 /* 电子警报音效.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79193831AEE7F4C0033FA59 /* 电子警报音效.mp3 */; };
+		A79193881AEE7F4D0033FA59 /* 防盗器音效.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79193841AEE7F4C0033FA59 /* 防盗器音效.mp3 */; };
+		A79193891AEE7F4D0033FA59 /* 雷达咚咚音效.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79193851AEE7F4C0033FA59 /* 雷达咚咚音效.mp3 */; };
+		A791938A1AEE7F4D0033FA59 /* 信号灯音效.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79193861AEE7F4C0033FA59 /* 信号灯音效.mp3 */; };
+		A79193951AEF69CB0033FA59 /* popback.png in Resources */ = {isa = PBXBuildFile; fileRef = A79193941AEF69CB0033FA59 /* popback.png */; };
 		A7BDCA011AE9E4C6009521DC /* tab_photograp_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA001AE9E4C6009521DC /* tab_photograp_bg.png */; };
 		A7BDCA031AE9EDB1009521DC /* album.png in Resources */ = {isa = PBXBuildFile; fileRef = A7BDCA021AE9EDB1009521DC /* album.png */; };
 		A7BDCA051AE9EFCC009521DC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BDCA041AE9EFCC009521DC /* MapKit.framework */; };
@@ -77,6 +83,12 @@
 		A7617B111AE93B5C00B2FCE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A7617B181AE9405F00B2FCE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A7617B1A1AE9407C00B2FCE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A78931241AEF8EF5006C9FE7 /* scan_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_normal.png; sourceTree = "<group>"; };
+		A79193831AEE7F4C0033FA59 /* 电子警报音效.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "电子警报音效.mp3"; sourceTree = "<group>"; };
+		A79193841AEE7F4C0033FA59 /* 防盗器音效.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "防盗器音效.mp3"; sourceTree = "<group>"; };
+		A79193851AEE7F4C0033FA59 /* 雷达咚咚音效.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "雷达咚咚音效.mp3"; sourceTree = "<group>"; };
+		A79193861AEE7F4C0033FA59 /* 信号灯音效.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "信号灯音效.mp3"; sourceTree = "<group>"; };
+		A79193941AEF69CB0033FA59 /* popback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popback.png; sourceTree = "<group>"; };
 		A7BDCA001AE9E4C6009521DC /* tab_photograp_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_photograp_bg.png; sourceTree = "<group>"; };
 		A7BDCA021AE9EDB1009521DC /* album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = album.png; sourceTree = "<group>"; };
 		A7BDCA041AE9EFCC009521DC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -257,6 +269,12 @@
 		A7F99CF11AE8F40100C4103B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A78931241AEF8EF5006C9FE7 /* scan_normal.png */,
+				A79193941AEF69CB0033FA59 /* popback.png */,
+				A79193831AEE7F4C0033FA59 /* 电子警报音效.mp3 */,
+				A79193841AEE7F4C0033FA59 /* 防盗器音效.mp3 */,
+				A79193851AEE7F4C0033FA59 /* 雷达咚咚音效.mp3 */,
+				A79193861AEE7F4C0033FA59 /* 信号灯音效.mp3 */,
 				A7BDCA4D1AEA89E3009521DC /* line.png */,
 				A7BDCA361AEA401A009521DC /* connect_bottom_off.png */,
 				A7BDCA371AEA401A009521DC /* connect_bottom_on.png */,
@@ -424,10 +442,14 @@
 				A7F99D1F1AE8F70B00C4103B /* setting_down@2x.png in Resources */,
 				A7BDCA171AEA1B5E009521DC /* camera-flash-off@2x.png in Resources */,
 				A7BDCA2F1AEA3C2F009521DC /* enter_down.png in Resources */,
+				A79193891AEE7F4D0033FA59 /* 雷达咚咚音效.mp3 in Resources */,
 				A7BDCA151AEA1B5E009521DC /* camera-switch@2x.png in Resources */,
 				A7F99D1B1AE8F70B00C4103B /* device_down@2x.png in Resources */,
 				A7F99D1D1AE8F70B00C4103B /* local_down@2x.png in Resources */,
+				A79193881AEE7F4D0033FA59 /* 防盗器音效.mp3 in Resources */,
+				A79193871AEE7F4D0033FA59 /* 电子警报音效.mp3 in Resources */,
 				A7BDCA381AEA401A009521DC /* connect_bottom_off.png in Resources */,
+				A791938A1AEE7F4D0033FA59 /* 信号灯音效.mp3 in Resources */,
 				A7F99CE61AE8F2CB00C4103B /* Default-568h@2x.png in Resources */,
 				A7F99CEF1AE8F2CB00C4103B /* Icon.png in Resources */,
 				A7F99CF01AE8F2CB00C4103B /* Icon@2x.png in Resources */,
@@ -435,7 +457,9 @@
 				A7BDCA2C1AEA3AB1009521DC /* device_icon_off.png in Resources */,
 				A7BDCA4E1AEA89E3009521DC /* line.png in Resources */,
 				A7617B141AE93CE200B2FCE9 /* Localizable.strings in Resources */,
+				A78931251AEF8EF5006C9FE7 /* scan_normal.png in Resources */,
 				A7BDCA031AE9EDB1009521DC /* album.png in Resources */,
+				A79193951AEF69CB0033FA59 /* popback.png in Resources */,
 				A7F99CE71AE8F2CB00C4103B /* Default.png in Resources */,
 				A7BDCA311AEA3C66009521DC /* enter_off.png in Resources */,
 				A7BDCA161AEA1B5E009521DC /* camera-flash-off.png in Resources */,

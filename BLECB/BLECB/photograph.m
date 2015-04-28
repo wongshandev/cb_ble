@@ -214,6 +214,12 @@ BOOL isInitCamera;
 
 - (void)viewDidLoad {
     
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(snapButtonPressed:)
+                                                 name: @"NTtackePhontos"
+                                               object: nil];
+
+    
     [self.view setBackgroundColor:[UIColor blackColor]];
     self.title=NSLocalizedString(@"拍照",nil);
     [self.navigationController.tabBarItem setTitle:NSLocalizedString(@"拍照",nil)];

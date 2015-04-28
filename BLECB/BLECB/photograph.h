@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotoVIew.h"
+#import "SVProgressHUD.h"
+#import "PeripheralsDetailSettingViewController.h"
+#import "Peripherals.h"
 @interface photograph : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end

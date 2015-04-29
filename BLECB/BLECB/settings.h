@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "SVProgressHUD.h"
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "SVHTTPRequest.h"
+extern NSMutableArray *nDevices;
+extern NSMutableArray *nServices;
+extern NSMutableArray *nCharacteristics;
+extern CBCharacteristic *writeCharacteristic;
+extern NSMutableArray *_nWriteCharacteristics;
 
-@interface settings : UIViewController
+@interface settings : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+- (void)getVersion;
 
 @end

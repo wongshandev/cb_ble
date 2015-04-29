@@ -10,12 +10,14 @@
 #import "Peripherals.h"
 #import "SVProgressHUD.h"
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "DICNAME.h"
+extern NSMutableDictionary *nPerpherName;
 @import CoreBluetooth;
 
 @class SCPCoreBluetoothCentralManager;
 @class CBPeripheral;
 
-@interface PeripheralsDetailSettingViewController : UIViewController
+@interface PeripheralsDetailSettingViewController : UIViewController<UITextFieldDelegate>
 
 @property (strong, nonatomic) NSString *textName;
 
@@ -33,7 +35,8 @@
 @property (nonatomic, strong) CBPeripheral *Peripheralsub;
 @property (strong,nonatomic) NSMutableArray *nDevices;
 @property (strong,nonatomic) NSMutableArray *nServices;
-//@property (strong,nonatomic) NSMutableArray *nCharacteristics;
 @property (strong ,nonatomic) CBCharacteristic *writeCharacteristicsub;
 
++(void)saveFordicName:(NSMutableDictionary *)dic;
++(NSMutableDictionary *)getFordicName;
 @end

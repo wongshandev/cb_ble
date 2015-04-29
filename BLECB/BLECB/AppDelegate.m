@@ -45,7 +45,9 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    
+//清掉全部通知
+     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

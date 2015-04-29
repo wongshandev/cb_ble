@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "522C9FABEB27A91F97771110"
+               BlueprintIdentifier = "AA864CE34FE78E90EF13B80C"
                BuildableName = "libPods-VIPhotoView.a"
                BlueprintName = "Pods-VIPhotoView"
                ReferencedContainer = "container:Pods.xcodeproj">

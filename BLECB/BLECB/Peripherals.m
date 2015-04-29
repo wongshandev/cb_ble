@@ -15,32 +15,43 @@ NSMutableArray *nDevices;
 NSMutableArray *nServices;
 NSMutableArray *nCharacteristics;
 CBCharacteristic *writeCharacteristic;
-
 NSMutableArray *allBleArray;
 CBPeripheral * peripheralDeviceSelect;
+NSMutableDictionary *nPerpherName;
+NSMutableArray *_nWriteCharacteristics;
+
 @interface Peripherals ()
 @property(nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UIActivityIndicatorView *activity;
 
 @property (nonatomic)BOOL AllowRefreshing;
 @property(nonatomic) float batteryValue;
-@property (strong,nonatomic) NSMutableArray *nWriteCharacteristics;
 @property (strong,nonatomic)UIBarButtonItem *rightbutton;
 @end
 
 @implementation Peripherals
 
+- (BOOL)hasConnectPerpheral
+{
+    for (CBPeripheral *p in nDevices)
+    {
+        if (p.state == CBPeripheralStateConnected)
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
 - (void)re_scan:(id)sender
 {
     if (_AllowRefreshing == YES)
     {
         [self initBLE];
     }
-    else if(peripheralDeviceSelect.state == CBPeripheralStateConnected)
+    else if([self hasConnectPerpheral] == YES)
     {
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"已经连接上，请先断开链接再刷新。",nil)];
         [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:250.0/255.0f green:250.0/255.0f blue:250.0/255.0f alpha:0.75f]];
-
     }
     else
     {
@@ -59,7 +70,16 @@ CBPeripheral * peripheralDeviceSelect;
     [self.navigationController.navigationBar addSubview:_activity];
     [_activity startAnimating];
 }
+- (void)initDatas
+{
+    nDevices = [[NSMutableArray alloc]init];
+    nServices = [[NSMutableArray alloc]init];
+    nCharacteristics = [[NSMutableArray alloc]init];
+    _nWriteCharacteristics = [[NSMutableArray alloc]init];
+}
 - (void)viewDidLoad {
+    nPerpherName = [[NSMutableDictionary alloc]initWithDictionary:[PeripheralsDetailSettingViewController getFordicName]];
+    [self initDatas];
     _AllowRefreshing = YES;
     [self initTableView];
     [self initBLE];
@@ -89,17 +109,7 @@ CBPeripheral * peripheralDeviceSelect;
 }
 - (void)initBLE
 {
-    nDevices = [[NSMutableArray alloc]init];
-    nServices = [[NSMutableArray alloc]init];
-    nCharacteristics = [[NSMutableArray alloc]init];
-
-    _nWriteCharacteristics = [[NSMutableArray alloc]init];
     manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    //断开BLE NTtackePhontos
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(DisConnectBLE)
-                                                 name: @"DisConnectBLE_NS"
-                                               object: nil];
 }
 - (void)initNotice
 {
@@ -147,6 +157,8 @@ CBPeripheral * peripheralDeviceSelect;
 
 - (void)BLEscan
 {
+    [self initDatas];
+
     [_activity startAnimating];
     //扫描所有的外设
 //    [manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
@@ -164,6 +176,7 @@ CBPeripheral * peripheralDeviceSelect;
 }
 - (void)viewDidAppear:(BOOL)animated
 {
+    [_tableView reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -224,7 +237,14 @@ CBPeripheral * peripheralDeviceSelect;
     }
     cell.PeripherConnectBut.tag = indexPath.row;
     cell.PeripherNextBut.tag = indexPath.row;
-    cell.PeripherNameLabel.text = peripheralDevice.name;
+    
+    CBPeripheral *p = [nDevices objectAtIndex:indexPath.row];
+    if ([nPerpherName objectForKey:p.identifier] != nil)
+    {
+        cell.PeripherNameLabel.text = [nPerpherName objectForKey:p.identifier];
+    }
+    else
+    cell.PeripherNameLabel.text = p.name;
 //    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];//显示小箭头
     return cell;
 }
@@ -245,41 +265,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-- (void)DisConnectBLE
-{
-    if (peripheralDeviceSelect.state != CBPeripheralStateDisconnected)
-    {
-        [manager cancelPeripheralConnection:peripheralDeviceSelect];
-    }
-    [_tableView reloadData];
-
-}
 - (IBAction)BLEConnectAction:(id)sender
 {
     
     NSLog(@"连接开始");
     UIButton *btn = (UIButton *)sender;
-    CBPeripheral * peripheralDevice = [nDevices objectAtIndex:btn.tag];
-
-    if (peripheralDevice.state == CBPeripheralStateDisconnected)
+    CBPeripheral *p = [nDevices objectAtIndex:btn.tag];
+    if (p.state == CBPeripheralStateDisconnected)
     {
-        for (CBPeripheral *p in nDevices) {
-            if (p.state == CBPeripheralStateConnected)
-            {
-                NSLog(@"有链接先断开");
-                //如果有连接的设备，先断开
-                [self DisConnectBLE];
-            }
-        }
-
-        [manager connectPeripheral:[nDevices objectAtIndex:btn.tag] options:nil];
+        [manager connectPeripheral:p options:nil];
     }
     else
     {
         //kTTSetABC
         writeCharacteristic = [_nWriteCharacteristics objectAtIndex:btn.tag];
-        [peripheralDevice readValueForCharacteristic:writeCharacteristic];
-        [peripheralDevice writeValue:[kSearchDevice dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        [p readValueForCharacteristic:writeCharacteristic];
+        [p writeValue:[kSearchDevice dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"发送中...",nil)];
         [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:250.0/255.0f green:250.0/255.0f blue:250.0/255.0f alpha:0.75f]];
     }
@@ -294,17 +295,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)PeripherSettingAction:(id)sender
 {
     NSLog(@"进入设置");
-    UIButton *btn = (UIButton *)sender;
+    UIButton * btn = (UIButton *)sender;
     
-    peripheralDeviceSelect = [nDevices objectAtIndex:btn.tag];
-    
-    if (peripheralDeviceSelect.state == CBPeripheralStateConnected)
+    CBPeripheral *p = [nDevices objectAtIndex:btn.tag];
+    if (p.state == CBPeripheralStateConnected)
     {
         PeripheralsDetailSettingViewController *vc = [[PeripheralsDetailSettingViewController alloc]init];
+        vc.textName = [nPerpherName objectForKey:p.identifier];
         vc.manager = manager;
-        [vc setPeripheralsub:[nDevices objectAtIndex:0]];
+        [vc setPeripheralsub:p];
         [vc setWriteCharacteristicsub:[_nWriteCharacteristics objectAtIndex:0]];
-        vc.textName = peripheralDeviceSelect.name;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else
@@ -353,6 +353,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     if (!replace)
     {
+        if ([nPerpherName objectForKey:peripheral.identifier] ==nil)
+        {
+            [nPerpherName setObject:peripheral.name forKey:peripheral.identifier];
+        }
         [nDevices addObject:peripheral];
         [_tableView reloadData];
     }
@@ -405,6 +409,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:250.0/255.0f green:250.0/255.0f blue:250.0/255.0f alpha:0.75f]];
         [self initNotice];
     }
+    [self initDatas];
     [self initBLE];
     [_tableView reloadData];
 }
@@ -537,14 +542,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     //更新TBALEVIEW
-    peripheral = peripheral;
     NSLog(@"%@",peripheral);
     
     BOOL replace = NO;
-    for (int i=0; i < nDevices.count; i++) {
-        CBPeripheral *p = [nDevices objectAtIndex:i];
-        if ([p.identifier isEqual:peripheral.identifier]) {
-            [nDevices replaceObjectAtIndex:i withObject:peripheral];
+    for (CBPeripheral *p in nDevices)
+    {
+        if ([p isEqual:peripheral])
+        {
             replace = YES;
         }
     }
@@ -552,6 +556,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     {
         [_tableView reloadData];
     }
+
 
 }
 //用于检测中心向外设写数据是否成功

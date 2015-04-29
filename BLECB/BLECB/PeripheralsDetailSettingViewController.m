@@ -10,23 +10,35 @@
 #import "SVProgressHUD.h"
 
 @interface PeripheralsDetailSettingViewController ()
+@property(nonatomic,strong)UIBarButtonItem *rightbutton;
 
 @end
 
 @implementation PeripheralsDetailSettingViewController
 @synthesize textName;
+- (void)ation_done:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    _rightbutton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                                 target:self
+                                                                 action:@selector(ation_done:)];
+    [_rightbutton setTintColor:[UIColor whiteColor]];
+    self.navigationItem.rightBarButtonItem = _rightbutton;
+
     
-    
-    
+    self.textFieldName.delegate =self;
+    [self.textFieldName addTarget:self action:@selector(textFieldEditChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.textFieldName setCenter:CGPointMake(self.view.center.x+10.0f, self.textFieldName.center.y)];
     [self.switchProtect setCenter:CGPointMake(self.view.center.x+20.0f, self.switchProtect.center.y)];
     [self.segemetDistance setCenter:CGPointMake(self.view.center.x, self.segemetDistance.center.y)];
     [self.butDisconnect setFrame:CGRectMake((self.view.frame.size.width-107.0f)/2.0, self.butDisconnect.frame.origin.y, self.butDisconnect.frame.size.width, self.butDisconnect.frame.size.height)];
+    
     self.textFieldName.text = textName;
     // Do any additional setup after loading the view from its nib.
     [self.switchProtect addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
@@ -55,10 +67,36 @@
     }
 
 }
+- (void)textFieldEditChanged:(UITextField *)textField
+{
+    NSLog(@"textfield text %@",textField.text);
+    [nPerpherName setObject:textField.text forKey:self.Peripheralsub.identifier];
+    [PeripheralsDetailSettingViewController saveFordicName:nPerpherName];
+    
+}
++(void)saveFordicName:(NSMutableDictionary *)dic
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dic];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"name_dic_perpher"];
+}
++(NSMutableDictionary *)getFordicName
+{
+    NSData *data =[[NSUserDefaults standardUserDefaults] objectForKey:@"name_dic_perpher"];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
+
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    
-    return YES; 
+    return YES;
+}
+- (void)DisConnectBLE
+{
+    if (self.Peripheralsub.state != CBPeripheralStateDisconnected)
+    {
+        [self.manager cancelPeripheralConnection:self.Peripheralsub];
+    }
 }
 - (void)BLEwriteValue:(NSString *)command
 {
@@ -110,7 +148,8 @@
 {
     NSLog(@"断开");
     [self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DisConnectBLE_NS" object:self];
+    [self DisConnectBLE];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"DisConnectBLE_NS" object:self];
 
 }
 - (void)didReceiveMemoryWarning {

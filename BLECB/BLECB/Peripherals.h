@@ -12,6 +12,9 @@
 #import "BleStatus.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "SVProgressHUD.h"
+#import "DICNAME.h"
+#import "SVHTTPRequest.h"
+
 /*
  1)	发送找寻移动电源命令：@SearchDevice#
  2)	发送打开免打扰功能命令：@OpenNoDisturb#
@@ -27,6 +30,9 @@
  c)	 其中C代表报警距离设置：“0”：近；“1”：中；“2”：远。
  
  */
+static NSString *const  objeKEYper = @"PERHAR";
+
+
 static NSString *const kCharacteristicWirteUUID = @"6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
 
 static NSString *const kCharacteristicUUID = @"6E400003-B5A3-F393-E0A9-E50E24DCCA9E";

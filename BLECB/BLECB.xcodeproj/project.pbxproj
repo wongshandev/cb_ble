@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8983E7B7A8136797E37915FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4BC961F24205C34EE19492 /* libPods.a */; };
+		A70161041AF07F7800A41759 /* DICNAME.m in Sources */ = {isa = PBXBuildFile; fileRef = A70161031AF07F7800A41759 /* DICNAME.m */; };
+		A70161131AF0D2FC00A41759 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A70161081AF0D2FC00A41759 /* NSObject+SBJSON.m */; };
+		A70161141AF0D2FC00A41759 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A701610A1AF0D2FC00A41759 /* NSString+SBJSON.m */; };
+		A70161151AF0D2FC00A41759 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A701610C1AF0D2FC00A41759 /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A70161161AF0D2FC00A41759 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A701610E1AF0D2FC00A41759 /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A70161171AF0D2FC00A41759 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A70161101AF0D2FC00A41759 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A70161181AF0D2FC00A41759 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A70161121AF0D2FC00A41759 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A7617B141AE93CE200B2FCE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7617B161AE93CE200B2FCE9 /* Localizable.strings */; };
 		A78931251AEF8EF5006C9FE7 /* scan_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A78931241AEF8EF5006C9FE7 /* scan_normal.png */; };
 		A79193871AEE7F4D0033FA59 /* 电子警报音效.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A79193831AEE7F4C0033FA59 /* 电子警报音效.mp3 */; };
@@ -80,6 +87,21 @@
 /* Begin PBXFileReference section */
 		0C76B6313D6A863E9C9D3B11 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4A634B759F2F3D4B3E3491E5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A70161021AF07F7800A41759 /* DICNAME.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DICNAME.h; sourceTree = "<group>"; };
+		A70161031AF07F7800A41759 /* DICNAME.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DICNAME.m; sourceTree = "<group>"; };
+		A70161061AF0D2FC00A41759 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		A70161071AF0D2FC00A41759 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		A70161081AF0D2FC00A41759 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		A70161091AF0D2FC00A41759 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		A701610A1AF0D2FC00A41759 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		A701610B1AF0D2FC00A41759 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		A701610C1AF0D2FC00A41759 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		A701610D1AF0D2FC00A41759 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		A701610E1AF0D2FC00A41759 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		A701610F1AF0D2FC00A41759 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		A70161101AF0D2FC00A41759 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		A70161111AF0D2FC00A41759 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		A70161121AF0D2FC00A41759 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		A7617B111AE93B5C00B2FCE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A7617B181AE9405F00B2FCE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A7617B1A1AE9407C00B2FCE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -195,9 +217,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A70161051AF0D2FC00A41759 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				A70161061AF0D2FC00A41759 /* JSON.h */,
+				A70161071AF0D2FC00A41759 /* NSObject+SBJSON.h */,
+				A70161081AF0D2FC00A41759 /* NSObject+SBJSON.m */,
+				A70161091AF0D2FC00A41759 /* NSString+SBJSON.h */,
+				A701610A1AF0D2FC00A41759 /* NSString+SBJSON.m */,
+				A701610B1AF0D2FC00A41759 /* SBJSON.h */,
+				A701610C1AF0D2FC00A41759 /* SBJSON.m */,
+				A701610D1AF0D2FC00A41759 /* SBJsonBase.h */,
+				A701610E1AF0D2FC00A41759 /* SBJsonBase.m */,
+				A701610F1AF0D2FC00A41759 /* SBJsonParser.h */,
+				A70161101AF0D2FC00A41759 /* SBJsonParser.m */,
+				A70161111AF0D2FC00A41759 /* SBJsonWriter.h */,
+				A70161121AF0D2FC00A41759 /* SBJsonWriter.m */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
 		A7BDC9F81AE9D8C6009521DC /* thirdSource */ = {
 			isa = PBXGroup;
 			children = (
+				A70161051AF0D2FC00A41759 /* json */,
 			);
 			name = thirdSource;
 			sourceTree = "<group>";
@@ -323,6 +366,8 @@
 				A7BDCA481AEA88B6009521DC /* PeripheralsDetailSettingViewController.h */,
 				A7BDCA491AEA88B6009521DC /* PeripheralsDetailSettingViewController.m */,
 				A7BDCA4A1AEA88B6009521DC /* PeripheralsDetailSettingViewController.xib */,
+				A70161021AF07F7800A41759 /* DICNAME.h */,
+				A70161031AF07F7800A41759 /* DICNAME.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -402,6 +447,7 @@
 				TargetAttributes = {
 					A7F99CAE1AE8F2AC00C4103B = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 4J7549764U;
 					};
 					A7F99CCA1AE8F2AC00C4103B = {
 						CreatedOnToolsVersion = 6.2;
@@ -525,16 +571,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F99CB81AE8F2AC00C4103B /* AppDelegate.m in Sources */,
+				A70161161AF0D2FC00A41759 /* SBJsonBase.m in Sources */,
 				A7F99CF51AE8F50C00C4103B /* Peripherals.m in Sources */,
+				A70161151AF0D2FC00A41759 /* SBJSON.m in Sources */,
 				A7F99CB51AE8F2AC00C4103B /* main.m in Sources */,
 				A7F99CF81AE8F57200C4103B /* photograph.m in Sources */,
+				A70161131AF0D2FC00A41759 /* NSObject+SBJSON.m in Sources */,
+				A70161181AF0D2FC00A41759 /* SBJsonWriter.m in Sources */,
 				A7BDCA3F1AEA44E1009521DC /* BleStatus.m in Sources */,
 				A7F99CFB1AE8F59300C4103B /* Loction.m in Sources */,
 				A7BDCA281AEA3A17009521DC /* PeripheralsCell.m in Sources */,
 				A7BDCA4B1AEA88B6009521DC /* PeripheralsDetailSettingViewController.m in Sources */,
 				A7F99CBE1AE8F2AC00C4103B /* ViewController.m in Sources */,
+				A70161141AF0D2FC00A41759 /* NSString+SBJSON.m in Sources */,
 				A7BDCA1C1AEA1D68009521DC /* PhotoVIew.m in Sources */,
 				A7F99CFE1AE8F5A800C4103B /* settings.m in Sources */,
+				A70161171AF0D2FC00A41759 /* SBJsonParser.m in Sources */,
+				A70161041AF07F7800A41759 /* DICNAME.m in Sources */,
 				A7F99CBB1AE8F2AC00C4103B /* BLECB.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,6 +713,7 @@
 			baseConfigurationReference = 4A634B759F2F3D4B3E3491E5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BLECB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -672,10 +726,13 @@
 			baseConfigurationReference = 0C76B6313D6A863E9C9D3B11 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Lingbao Electronics Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Lingbao Electronics Co., Ltd.";
 				INFOPLIST_FILE = BLECB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "947fa60e-31da-46e0-9a81-d129587fb434";
 			};
 			name = Release;
 		};

@@ -410,8 +410,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [self initNotice];
     }
     [self initDatas];
-    [self initBLE];
+    NSMutableArray *array = [NSMutableArray array];
+    for (int v=0; v < [nDevices count]; v++)
+    {
+        [array addObject:[NSIndexPath indexPathForRow:v inSection:0]];
+        [_tableView deleteRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationRight];
+    }
     [_tableView reloadData];
+    [self initBLE];
 }
 /*
  *  @method UUIDToString

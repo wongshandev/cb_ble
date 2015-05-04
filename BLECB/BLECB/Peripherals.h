@@ -63,9 +63,9 @@ static NSString *const kRevStoptAlarm = @"@StopAlarm#";
 
 static NSString *const  nNoticeTakePhotos = @"NTtackePhontos";
 
-static NSString *const  kOpenString = @"0";
+static NSString *const  kOpenString = @"1";
 
-static NSString *const  kCloseString = @"1";
+static NSString *const  kCloseString = @"0";
 
 
 @interface Peripherals : UIViewController<UITableViewDelegate,UITableViewDataSource,CBCentralManagerDelegate,CBPeripheralDelegate>

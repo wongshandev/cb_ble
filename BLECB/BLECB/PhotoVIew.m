@@ -32,9 +32,9 @@
     [self.view addSubview:photoView];
     
     _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _backButton.frame = CGRectMake(6, 3, 40.0f, 44.0f);
+    _backButton.frame = CGRectMake(6, 3, 44.0f, 44.0f);
     [_backButton setImage:[UIImage imageNamed:@"fanhuijinguo"] forState:UIControlStateNormal];
-    [_backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchDragInside];
+    [_backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     _navView = [[UIView alloc]initWithFrame:_navFrame];
     [_navView setBackgroundColor:[UIColor redColor]];
     [_navView addSubview:_backButton];

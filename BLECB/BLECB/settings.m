@@ -108,8 +108,11 @@
     }
     else if (indexPath.row == 1)
     {
+        NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+        CFShow((__bridge CFTypeRef)(infoDic));
+
         cell.textLabel.text = NSLocalizedString(@"当前版本",nil);
-        cell.detailTextLabel.text = @"Ver1.0.0";
+        cell.detailTextLabel.text = [infoDic objectForKey:@"CFBundleShortVersionString"];
         
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];//显示小箭头
     }
@@ -154,7 +157,7 @@ static bool isGetResult = false;
     }
     if (progressVaule < 1.0f)
     {
-        [self performSelector:@selector(increateProgress) withObject:nil afterDelay:0.05f];
+        [self performSelector:@selector(increateProgress) withObject:nil afterDelay:0.005f];
     }
     else
     {
@@ -201,8 +204,8 @@ static bool isGetResult = false;
                      
                      version = [[info objectForKey:@"version"] floatValue];
                      
-                     version = (int)(version*10);
-                     if (version > (int)ver*10)
+                     version = (int)(version*100);
+                     if (version > (int)(ver*100))
                      {
                          //需要升级
                          NSString * ota_url =nil;
@@ -219,6 +222,12 @@ static bool isGetResult = false;
                          UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"有更新了" message:definition delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:@"现在去更新", nil];
                          alert.delegate =self;
                          alert.tag = 99;
+                         [alert show];
+                     }
+                     else
+                     {
+                         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"该版已经最新了哦",nil) delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:@"现在去更新", nil];
+                         alert.delegate =self;
                          [alert show];
                      }
                      

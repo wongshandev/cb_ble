@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 //#import "CRNavigationController.h"
-
+#import "SBJSON.h"
 @interface AppDelegate ()
 {
 }
@@ -21,7 +21,23 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    
+    //-- Set Notification
+    if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
+    {
+        // iOS 8 Notifications
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        
+        [application registerForRemoteNotifications];
+        
+    }
+    else
+    {
+        // iOS < 8 Notifications
+        [application registerForRemoteNotificationTypes:
+         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+    }
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     ViewController *rootController = [[ViewController alloc]init];
@@ -63,6 +79,83 @@
     [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:250.0/255.0f green:250.0/255.0f blue:250.0/255.0f alpha:0.75f]];
 
 }
+- (void)getVersion
+{
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    CFShow((__bridge CFTypeRef)(infoDic));
+    //    NSString *app_Name = [infoDic objectForKey:@"CFBundleDisplayName"];
+    NSString *app_Version = [infoDic objectForKey:@"CFBundleShortVersionString"];
+    // app build版本
+    //    NSString *app_build = [infoDic objectForKey:@"CFBundleVersion"];
+    
+    float ver = [app_Version floatValue];
+    
+    NSString * ota_url = [NSString stringWithFormat:@"http://iosvoipapp.qiniudn.com/BLE_CB.txt"];
+    [SVHTTPRequest POST:ota_url
+             parameters:nil
+             completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+                 
+                 NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingUTF8);
+                 NSString * ReturnData = [[NSString alloc] initWithData:response encoding:enc];
+                 NSLog(@"return data [%@]",ReturnData);
+                 
+                 NSMutableArray * arry = [[NSMutableArray alloc]init];
+                 SBJsonParser *jsonParser = [[SBJsonParser alloc] init];
+                 
+                 arry = [jsonParser objectWithString:ReturnData];
+                 
+                 {
+                     float version = 0.0;
+                     NSString * definition = nil;
+                     NSDictionary * info = [[arry objectAtIndex:0] objectForKey:@"app_info"];
+                     
+                     version = [[info objectForKey:@"version"] floatValue];
+                     
+                     version = (int)(version*10);
+                     if (version > (int)ver*10)
+                     {
+                         //需要升级
+                         NSString * ota_url =nil;
+                         
+                         ota_url = [[NSString alloc]initWithFormat:@"%@",[info objectForKey:@"download_url"]];
+                         
+                         NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+                         [defaults setObject:ota_url forKey:@"updata_url"];
+                         [defaults synchronize];
+                         
+                         
+                         definition =[[NSString alloc]initWithFormat:@"%@",[info objectForKey:@"version_definition"]];
+                         
+                         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"有更新了" message:definition delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:@"现在去更新", nil];
+                         alert.delegate =self;
+                         alert.tag = 99;
+                         [alert show];
+                     }
+                     
+                     //以下是保护
+                     NSString * isProtect = nil;
+                     
+                     NSDictionary * app_protect = [[arry objectAtIndex:0] objectForKey:@"app_protect"];
+                     isProtect = [[NSString alloc]initWithFormat:@"%@",[app_protect objectForKey:@"protect"]];
+                     if ([isProtect isEqualToString:@"YES"])
+                     {
+                         NSString *msgContent = [app_protect objectForKey:@"protect_definition"];
+                         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:msgContent delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+                         [alert show];
+                     }
+                     
+                 }
+             }];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ((buttonIndex == 1)&&(alertView.tag == 99)) {
+        NSURL * url_open = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"updata_url"]];
+        [[UIApplication sharedApplication]openURL:url_open];
+        
+    }
+}
+
 
 #pragma mark - Core Data stack
 

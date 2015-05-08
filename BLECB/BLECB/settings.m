@@ -226,7 +226,7 @@ static bool isGetResult = false;
                      }
                      else
                      {
-                         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"该版已经最新了哦",nil) delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:@"现在去更新", nil];
+                         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"该版已经最新了哦",nil) delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
                          alert.delegate =self;
                          [alert show];
                      }

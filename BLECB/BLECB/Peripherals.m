@@ -10,7 +10,7 @@
 
 
 CBCentralManager *manager;
-CBPeripheral *peripheral;
+CBPeripheral *_peripheral;
 NSMutableArray *nDevices;
 NSMutableArray *nServices;
 NSMutableArray *nCharacteristics;
@@ -271,8 +271,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     NSLog(@"连接开始");
     UIButton *btn = (UIButton *)sender;
     CBPeripheral *p = [nDevices objectAtIndex:btn.tag];
+    
     if (p.state == CBPeripheralStateDisconnected)
     {
+        for (CBPeripheral *sub in nDevices) {
+            if (sub.state != CBPeripheralStateDisconnected)
+            {
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"请先断开其中一个蓝牙链接",nil)];
+                [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:250.0/255.0f green:250.0/255.0f blue:250.0/255.0f alpha:0.75f]];
+                return;
+            }
+        }
+
         [manager connectPeripheral:p options:nil];
     }
     else
@@ -280,16 +290,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         //kTTSetABC
         writeCharacteristic = [_nWriteCharacteristics objectAtIndex:btn.tag];
         [p readValueForCharacteristic:writeCharacteristic];
-        [p writeValue:[kSearchDevice dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        [self BLEwriteValue:kSearchDevice per:p charact:writeCharacteristic];
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"发送中...",nil)];
         [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:250.0/255.0f green:250.0/255.0f blue:250.0/255.0f alpha:0.75f]];
     }
 }
-- (void)BLEwriteValue:(NSString *)command
+- (void)BLEwriteValue:(NSString *)command per:(CBPeripheral *)p charact:(CBCharacteristic *)writechararcter
 {
+    NSLog(@"发送数据 %@",command);
     if (command != nil)
     {
-        [peripheral writeValue:[command dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:writeCharacteristic type:CBCharacteristicWriteWithResponse];
+        _peripheral = p;
+        [p writeValue:[command dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:writechararcter type:CBCharacteristicWriteWithResponse];
     }
 }
 - (IBAction)PeripherSettingAction:(id)sender
@@ -333,15 +345,17 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             [_activity stopAnimating];
             [_rightbutton setEnabled:NO];
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"请打开本机蓝牙哦",nil)];
+            [_tableView reloadData];
             NSLog(@"没打开蓝牙");
+            
             break;
     }
 }
 //查到外设后，停止扫描，连接设备
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", peripheral, RSSI, peripheral.UUID, advertisementData);
-    peripheral = peripheral;
+    NSLog(@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", _peripheral, RSSI, peripheral.UUID, advertisementData);
+    _peripheral = peripheral;
     
     BOOL replace = NO;
     for (int i=0; i < nDevices.count; i++) {
@@ -443,11 +457,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 }
 -(void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
 {
-    //NSLog(@"%s,%@",__PRETTY_FUNCTION__,peripheral);
-//    int rssi = abs([peripheral.RSSI intValue]);
-//    CGFloat ci = (rssi - 49) / (10 * 4.);
-//    NSString *length = [NSString stringWithFormat:@"发现BLT4.0热点:%@,距离:%.1fm",_peripheral,pow(10,ci)];
-//    NSLog(@"距离：%@",length);
+    
+    int rssi = abs([peripheral.RSSI intValue]);
+    CGFloat ci = (rssi - 49) / (10 * 4.);
+    NSString *length = [NSString stringWithFormat:@"发现BLT4.0热点:%@,距离:%.1fm",_peripheral,pow(10,ci)];
+    NSLog(@"距离：%@",length);
+    _peripheral = peripheral;
+//    [_peripheral readRSSI];
 }
 //已发现服务
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
@@ -467,7 +483,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 //已搜索到Characteristics
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-    peripheral = peripheral;
+    _peripheral = peripheral;
     for (CBCharacteristic *c in service.characteristics) {
         NSLog(@"特征 UUID: %@ (%@)",c.UUID.data,c.UUID);
         if ([c.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicUUID]])
@@ -475,7 +491,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             BOOL _isPlace = false;
             
             [peripheral setNotifyValue:YES forCharacteristic:c];
-
+            [_peripheral readRSSI];
             for (int i=0; i < [nCharacteristics count]; i++)
             {
                 CBCharacteristic *_tmpwriteCharacteristic = [nCharacteristics objectAtIndex:i];
@@ -492,7 +508,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         }
         if ([c.UUID isEqual:[CBUUID UUIDWithString:kCharacteristicWirteUUID]]) {
             [_nWriteCharacteristics addObject:c];
-            [peripheral writeValue:[[self getConfig] dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:c type:CBCharacteristicWriteWithResponse];
+            [self BLEwriteValue:[self getConfig] per:peripheral charact:c];
         }
     }
 }

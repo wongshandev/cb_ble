@@ -155,7 +155,10 @@
         
     }
 }
-
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 #pragma mark - Core Data stack
 

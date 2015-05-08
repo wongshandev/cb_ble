@@ -28,7 +28,6 @@ BOOL isInitCamera;
 {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat tabBarHeight = self.tabBarController.tabBar.frame.size.height;
-    isInitCamera = YES;
     self.camera = [[LLSimpleCamera alloc] initWithQuality:CameraQualityPhoto andPosition:CameraPositionFront];
     [self.camera attachToViewController:self withFrame:CGRectMake(0, tabBarHeight, screenRect.size.width, screenRect.size.height-tabBarHeight)];
 
@@ -128,6 +127,18 @@ BOOL isInitCamera;
     [self.view addSubview:self.switchButton];
 
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.camera) {
+        isInitCamera = YES;
+        [self.camera start];
+    }
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.camera stop];
+    isInitCamera = NO;
+}
 -(void)LocalPhoto{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     //资源类型为图片库
@@ -200,17 +211,6 @@ BOOL isInitCamera;
     
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.camera start];
-
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    // stop the camera
-    [self.camera stop];
-}
 
 - (void)viewDidLoad {
     
@@ -266,6 +266,12 @@ BOOL isInitCamera;
     [self.camera start];
 }
 - (void)snapButtonPressed:(UIButton *)button {
+    
+    if (isInitCamera == NO)
+    {
+        NSLog(@"不在相机画面,不拍照");
+        return;
+    }
     
     // capture
     [self.camera capture:^(LLSimpleCamera *camera, UIImage *image, NSDictionary *metadata, NSError *error) {

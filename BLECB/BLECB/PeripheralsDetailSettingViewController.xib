@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PeripheralsDetailSettingViewController">
             <connections>
-                <outlet property="butDisconnect" destination="nWI-Ut-sAn" id="SxO-Te-O4V"/>
+                <outlet property="btAlert" destination="nWI-Ut-sAn" id="4qe-Jj-dPC"/>
                 <outlet property="segemetDistance" destination="nQH-Hx-VRH" id="Dts-rP-giz"/>
                 <outlet property="switchProtect" destination="TCW-nZ-xcV" id="uh7-gM-Liu"/>
                 <outlet property="textFieldName" destination="rrf-cJ-en2" id="Nf7-ic-SAr"/>
@@ -20,60 +20,60 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="device_icon_on.png" translatesAutoresizingMaskIntoConstraints="NO" id="DyR-XC-vla">
-                    <rect key="frame" x="69" y="97" width="45" height="45"/>
+                    <rect key="frame" x="69" y="79" width="45" height="45"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="connect_bottom_off.png" translatesAutoresizingMaskIntoConstraints="NO" id="rrf-cJ-en2">
-                    <rect key="frame" x="131" y="101" width="157" height="41"/>
+                    <rect key="frame" x="131" y="83" width="157" height="41"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="1WB-8w-gch">
-                    <rect key="frame" x="0.0" y="157" width="414" height="1"/>
+                    <rect key="frame" x="0.0" y="139" width="414" height="1"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="fJH-lF-tcS">
-                    <rect key="frame" x="0.0" y="230" width="414" height="1"/>
+                    <rect key="frame" x="0.0" y="212" width="414" height="1"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-Cq-vtt">
-                    <rect key="frame" x="0.0" y="355" width="414" height="1"/>
+                    <rect key="frame" x="0.0" y="337" width="414" height="1"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="防盗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Aq-C0-dDF">
-                    <rect key="frame" x="80" y="177" width="34" height="30"/>
+                    <rect key="frame" x="80" y="159" width="34" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TCW-nZ-xcV">
-                    <rect key="frame" x="239" y="176" width="51" height="31"/>
+                    <rect key="frame" x="241" y="158" width="51" height="31"/>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="报警距离" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6Q-kl-U49">
-                    <rect key="frame" x="43" y="254" width="71" height="24"/>
+                    <rect key="frame" x="43" y="236" width="71" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWI-Ut-sAn">
-                    <rect key="frame" x="127" y="393" width="107" height="49"/>
-                    <state key="normal" title="断   开" backgroundImage="connect_bottom_on.png">
-                        <color key="titleColor" red="0.99911221589999999" green="0.99911221589999999" blue="0.99911221589999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="actionDisconnect:" destination="-2" eventType="touchUpInside" id="U3A-8U-Em1"/>
-                    </connections>
-                </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nQH-Hx-VRH">
-                    <rect key="frame" x="54" y="299" width="253" height="29"/>
+                    <rect key="frame" x="61" y="281" width="253" height="29"/>
                     <segments>
                         <segment title="近"/>
                         <segment title="中"/>
                         <segment title="远"/>
                     </segments>
                 </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="107" placeholderIntrinsicHeight="49" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWI-Ut-sAn">
+                    <rect key="frame" x="127" y="375" width="107" height="49"/>
+                    <state key="normal" backgroundImage="connect_bottom_on.png">
+                        <color key="titleColor" red="0.99911221589999999" green="0.99911221589999999" blue="0.99911221589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="actionAlert:" destination="-1" eventType="touchUpInside" id="Lqp-qL-WfA"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-            <point key="canvasLocation" x="-33" y="408"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="139" y="136"/>
         </view>
     </objects>
     <resources>

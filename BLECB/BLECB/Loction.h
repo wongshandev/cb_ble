@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "SVProgressHUD.h"
 
-@interface Loction : UIViewController<MKMapViewDelegate>
+@interface Loction : UIViewController<MKMapViewDelegate,CLLocationManagerDelegate>
+
 
 @end

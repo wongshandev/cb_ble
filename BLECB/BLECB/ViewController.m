@@ -30,6 +30,7 @@
     nav_1.navigationBar.barTintColor = [UIColor redColor];
     nav_1.tabBarItem = item_1;
     
+    
     photograph *photograph_2 = [[photograph alloc]init];
     UITabBarItem *item_2 = [[UITabBarItem alloc]initWithTitle:NSLocalizedString(@"拍照",nil) image:[UIImage imageNamed:@"camera_down"] tag:2];
     UINavigationController * nav_2 = [[UINavigationController alloc]initWithRootViewController:photograph_2];

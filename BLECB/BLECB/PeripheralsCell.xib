@@ -46,21 +46,11 @@
                             <action selector="BLEConnectAction:" destination="-2" eventType="touchUpInside" id="i8Y-2h-Ska"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94a-65-ClZ">
-                        <rect key="frame" x="279" y="10" width="46" height="32"/>
-                        <state key="normal" image="enter_off.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="PeripherSettingAction:" destination="-2" eventType="touchUpInside" id="xtM-TH-LSC"/>
-                        </connections>
-                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="PeripherConnectBut" destination="GxH-zN-TMn" id="qcR-fx-XrF"/>
                 <outlet property="PeripherNameLabel" destination="Xyd-wv-gOv" id="Mcw-u6-rYb"/>
-                <outlet property="PeripherNextBut" destination="94a-65-ClZ" id="OEX-a2-FoV"/>
                 <outlet property="PerpherConectStatueLabel" destination="Dt5-rp-ZI7" id="6hn-12-TKD"/>
                 <outlet property="cellHeardImgview" destination="fRm-t3-dEU" id="AiG-DX-WOF"/>
             </connections>
@@ -69,6 +59,5 @@
     </objects>
     <resources>
         <image name="connect_bottom_off.png" width="107" height="49"/>
-        <image name="enter_off.png" width="24" height="34"/>
     </resources>
 </document>

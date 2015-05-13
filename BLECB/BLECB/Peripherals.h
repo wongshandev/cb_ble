@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PeripheralsCell.h"
-#import "PeripheralsDetailSettingViewController.h"
 #import "BleStatus.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "SVProgressHUD.h"
@@ -67,15 +66,10 @@ static NSString *const  kOpenString = @"1";
 
 static NSString *const  kCloseString = @"0";
 
-
 @interface Peripherals : UIViewController<UITableViewDelegate,UITableViewDataSource,CBCentralManagerDelegate,CBPeripheralDelegate>
-
-
 - (IBAction)BLEConnectAction:(id)sender;
 - (IBAction)PeripherSettingAction:(id)sender;
-
-- (void)BLEwriteValue:(NSString *)command;
-
+- (void)BLEwriteValue:(NSString *)command per:(CBPeripheral *)p charact:(CBCharacteristic *)writechararcter;
 //@property (nonatomic, strong) CBCentralManager *manager;
 //@property (nonatomic, strong) CBPeripheral *peripheral;
 //@property (nonatomic,strong) UIActivityIndicatorView *activity;

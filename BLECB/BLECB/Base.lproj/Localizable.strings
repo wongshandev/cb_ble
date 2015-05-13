@@ -5,5 +5,4 @@
   Created by Huang Shan on 15/4/23.
   Copyright (c) 2015年 Huang Shan. All rights reserved.
 */
-"您好" = "HELLO";
-"设备" = "Peripherals";
+"Peripherals"="设备";

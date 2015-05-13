@@ -53,7 +53,7 @@
 
 - (void)viewDidLoad {
     
-    _tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0-self.navigationController.navigationBar.frame.size.height+10, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     _tableview.delegate=self;
     _tableview.dataSource = self;
     _tableview.rowHeight = 55.0f;
@@ -131,6 +131,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;//默认为1
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.0f;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section;
+{
+    return 0.0f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

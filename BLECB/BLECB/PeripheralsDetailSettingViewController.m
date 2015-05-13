@@ -9,25 +9,55 @@
 #import "PeripheralsDetailSettingViewController.h"
 #import "SVProgressHUD.h"
 
+BOOL _isActiveView;
 @interface PeripheralsDetailSettingViewController ()
 @property(nonatomic,strong)UIBarButtonItem *rightbutton;
-
+@property(nonatomic,strong)UIBarButtonItem *leftbutton;
 @end
 
 @implementation PeripheralsDetailSettingViewController
 @synthesize textName;
 - (void)ation_done:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [_textFieldName resignFirstResponder];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"已保存",nil)];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:250.0/255.0f green:250.0/255.0f blue:250.0/255.0f alpha:0.75f]];
+//    [self.navigationController popViewControllerAnimated:YES];
+}
+-(IBAction)actionAlert:(id)sender
+{
+    [self BLEwriteValue:kSearchDevice];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    _isActiveView = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"断开",nil)
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(actionDisconnect:)];
+    [self.navigationItem setHidesBackButton:YES];
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+    _isActiveView = NO;
 }
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(popViewFromPeripheralsDetail)
+                                                 name: @"disConnect_nofiy"
+                                               object: nil];
 
+    [super viewDidLoad];
+    self.tabBarController.delegate = self;
     _rightbutton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                  target:self
                                                                  action:@selector(ation_done:)];
     [_rightbutton setTintColor:[UIColor whiteColor]];
+    
     self.navigationItem.rightBarButtonItem = _rightbutton;
 
     
@@ -65,7 +95,8 @@
     {
         [self.segemetDistance setSelectedSegmentIndex:2];
     }
-
+    [_btAlert setTitle:NSLocalizedString(@"报  警",nil) forState:UIControlStateNormal];
+    [_btAlert setCenter:CGPointMake(self.view.center.x, _btAlert.center.y)];
 }
 - (void)textFieldEditChanged:(UITextField *)textField
 {
@@ -147,7 +178,9 @@
 -(void)actionDisconnect:(id)sender
 {
     NSLog(@"断开");
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self popViewFromPeripheralsDetail];
+    
     [self DisConnectBLE];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"DisConnectBLE_NS" object:self];
 
@@ -175,6 +208,28 @@
         [self BLEwriteValue:kOpenSecurity];
         NSLog(@"关闭防盗");
     }
+}
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+
+}
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+
+}
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    if (viewController == [tabBarController.viewControllers objectAtIndex:0] &&(_isActiveView == YES))
+    {
+        // Enable all but the last tab.
+        return NO;
+    }
+    
+    return YES;
+}
+- (void)popViewFromPeripheralsDetail
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 /*
 #pragma mark - Navigation

@@ -28,10 +28,12 @@
     self.mapView.delegate = self;
     //请求定位服务
     self._locationManager=[[CLLocationManager alloc]init];
-    
-    if([[[UIDevice currentDevice]systemVersion]doubleValue]>8.0)
+    self._locationManager.delegate = self;
+    if([[[UIDevice currentDevice]systemVersion] doubleValue]>=8.0)
     {
+        // Use one or the other, not both. Depending on what you put in info.plist
         [self._locationManager requestWhenInUseAuthorization];
+        [self._locationManager requestAlwaysAuthorization];
     }
     [self._locationManager startUpdatingLocation];
 
@@ -79,6 +81,21 @@
     }
 
 }
+- (void)viewDidAppear:(BOOL)animated
+{
+    self._locationManager.distanceFilter = kCLDistanceFilterNone;
+    self._locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self._locationManager startUpdatingLocation];
+    NSLog(@"%@", [self deviceLocation]);
+    
+    //View Area
+    MKCoordinateRegion region = { { 0.0, 0.0 }, { 0.0, 0.0 } };
+    region.center.latitude = self._locationManager.location.coordinate.latitude;
+    region.center.longitude = self._locationManager.location.coordinate.longitude;
+    region.span.longitudeDelta = 0.05f;
+    region.span.longitudeDelta = 0.05f;
+    [self.mapView setRegion:region animated:YES];
+}
 - (void)viewDidLoad {
     self.title=NSLocalizedString(@"地图定位",nil);
     [self.navigationController.tabBarItem setTitle:NSLocalizedString(@"地图",nil)];
@@ -105,6 +122,18 @@
     [_activityIndicatorView stopAnimating];
 
 }
+- (NSString *)deviceLocation {
+    return [NSString stringWithFormat:@"latitude: %f longitude: %f", self._locationManager.location.coordinate.latitude, self._locationManager.location.coordinate.longitude];
+}
+- (NSString *)deviceLat {
+    return [NSString stringWithFormat:@"%f", self._locationManager.location.coordinate.latitude];
+}
+- (NSString *)deviceLon {
+    return [NSString stringWithFormat:@"%f", self._locationManager.location.coordinate.longitude];
+}
+- (NSString *)deviceAlt {
+    return [NSString stringWithFormat:@"%f", self._locationManager.location.altitude];
+}
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
     if (
@@ -112,9 +141,9 @@
         (![self._locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)] && status != kCLAuthorizationStatusNotDetermined && status != kCLAuthorizationStatusAuthorized)
         ) {
         
-        NSString *message = @"您的手机目前未开启定位服务，如欲开启定位服务，请至设定开启定位服务功能";
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"无法定位" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alertView show];
+//        NSString *message = @"您的手机目前未开启定位服务，如欲开启定位服务，请至设定开启定位服务功能";
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"无法定位" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//        [alertView show];
         
     }else {
         

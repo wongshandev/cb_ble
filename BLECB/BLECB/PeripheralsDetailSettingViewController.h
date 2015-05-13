@@ -14,10 +14,11 @@
 extern NSMutableDictionary *nPerpherName;
 @import CoreBluetooth;
 
+
 @class SCPCoreBluetoothCentralManager;
 @class CBPeripheral;
 
-@interface PeripheralsDetailSettingViewController : UIViewController<UITextFieldDelegate>
+@interface PeripheralsDetailSettingViewController : UIViewController<UIApplicationDelegate,UITextFieldDelegate,UITabBarDelegate,UITabBarControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) NSString *textName;
 
@@ -30,12 +31,16 @@ extern NSMutableDictionary *nPerpherName;
 
 @property (weak, nonatomic) IBOutlet UIButton *butDisconnect;
 
--(IBAction)actionDisconnect:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btAlert;
+-(IBAction)actionAlert:(id)sender;
+
+-(void)actionDisconnect:(id)sender;
 @property (nonatomic, strong) CBCentralManager *manager;
 @property (nonatomic, strong) CBPeripheral *Peripheralsub;
 @property (strong,nonatomic) NSMutableArray *nDevices;
 @property (strong,nonatomic) NSMutableArray *nServices;
 @property (strong ,nonatomic) CBCharacteristic *writeCharacteristicsub;
+- (void) popViewFromPeripheralsDetail;  //define delegate method to be implemented within another class
 
 +(void)saveFordicName:(NSMutableDictionary *)dic;
 +(NSMutableDictionary *)getFordicName;
